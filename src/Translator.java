@@ -4,12 +4,10 @@
 public class Translator {
     private LanguageContainer charContainer;
     private String wordSeparator;
-    private String charSeparator;
 
     public Translator() {
         charContainer = new LanguageContainer();
         wordSeparator = "/";
-        charSeparator = "_";
     }
 
     /** Converts str into the language given and returns translated string
@@ -32,7 +30,7 @@ public class Translator {
                 }
             } else { //Currently have english
                 if (character.equals(wordSeparator)) {
-                     translated += "/";
+                     translated += wordSeparator;
                 } else {
                     translated += charContainer.find(character, language) + " ";
                 }
@@ -60,7 +58,7 @@ public class Translator {
             String cutWords = "";
 
             for (String i: words) {
-                cutWords += i + "/";
+                cutWords += i + wordSeparator;
             }
 
             String delims = "[ /]+";
