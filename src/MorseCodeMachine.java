@@ -9,12 +9,16 @@ public class MorseCodeMachine extends Frame{
     private TextArea outputField;
 
     public MorseCodeMachine() {
+        Font uniform = new Font("Times New Roman", Font.PLAIN, 25);
+
         Panel panelDisplay = new Panel(new FlowLayout());
-        inputField = new TextArea(6, 40);
+        inputField = new TextArea(4, 20);
+        inputField.setFont(uniform);
         panelDisplay.add(inputField);
 
-        outputField = new TextArea(6,40);
+        outputField = new TextArea(4,20);
         outputField.setEditable(false);
+        outputField.setFont(uniform);
         panelDisplay.add(outputField);
 
         Panel buttonsDisplay = new Panel(new GridLayout(1, 2, 5, 5));
@@ -24,6 +28,9 @@ public class MorseCodeMachine extends Frame{
         ButtonListener listener = new ButtonListener();
         toMorse.addActionListener(listener);
         toEnglish.addActionListener(listener);
+
+        toMorse.setFont(uniform);
+        toEnglish.setFont(uniform);
 
         buttonsDisplay.add(toMorse);
         buttonsDisplay.add(toEnglish);
@@ -41,7 +48,7 @@ public class MorseCodeMachine extends Frame{
 
 
         int windowWidth = 650;
-        int windowHeight = 350;
+        int windowHeight = 300;
         setTitle("Morse Code Machine");
         setSize(windowWidth, windowHeight);
 
