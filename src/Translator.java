@@ -11,11 +11,12 @@ public class Translator {
     }
 
     /** Converts str into the language given and returns translated string
-     * @param language valid language implemented in LanguageContainer
-     * @param str valid string with english characters
-     * @return string that is translated in language
+     * @param language either "morse" or "english"
+     * @param str valid string, either in morse or english
+     * @return string that is translated to language
      */
     public String translate(String str, String language) {
+        //parses str into a readable format
         String[] characters = characters(str, language);
         String translated = "";
 
@@ -39,10 +40,14 @@ public class Translator {
         return translated;
     }
 
+    /**
+     * Turns str into a readable format
+     * Returns array where each element is a character of its language
+     * and words are separated with wordSeparator
+     */
     private String[] characters(String str, String language){
         //Currently have english
         if (language.equals("morse")) {
-            str = str.toLowerCase();
             String splitStr = "";
             for (int i = 0; i < str.length(); i++) {
                 String substring = str.substring(i, i+1);

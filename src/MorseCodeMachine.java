@@ -5,15 +5,15 @@ import java.awt.event.*;
  * Created by Perry on 2/4/2017.
  */
 public class MorseCodeMachine extends Frame{
-    private TextField inputField;
+    private TextArea inputField;
     private TextArea outputField;
 
     public MorseCodeMachine() {
         Panel panelDisplay = new Panel(new FlowLayout());
-        inputField = new TextField("", 20);
+        inputField = new TextArea(6, 40);
         panelDisplay.add(inputField);
 
-        outputField = new TextArea(5,40);
+        outputField = new TextArea(6,40);
         outputField.setEditable(false);
         panelDisplay.add(outputField);
 
@@ -40,7 +40,7 @@ public class MorseCodeMachine extends Frame{
         add(buttonsDisplay, BorderLayout.CENTER);
 
 
-        int windowWidth = 600;
+        int windowWidth = 650;
         int windowHeight = 350;
         setTitle("Morse Code Machine");
         setSize(windowWidth, windowHeight);
@@ -65,6 +65,7 @@ public class MorseCodeMachine extends Frame{
                 System.out.println("Please enter something in the box.");
                 return;
             }
+
             Translator translator = new Translator();
             String symbol = ((Button) e.getSource()).getLabel();
             String input = inputField.getText();
