@@ -7,10 +7,6 @@ import java.awt.event.*;
 public class MorseCodeMachine extends Frame{
     private TextField inputField;
     private TextArea outputField;
-    private Button toMorse;
-    private Button toEnglish;
-    private final int WINDOWWIDTH = 500;
-    private final int WINDOWHEIGHT = 250;
 
     public MorseCodeMachine() {
         Panel panelDisplay = new Panel(new FlowLayout());
@@ -23,8 +19,8 @@ public class MorseCodeMachine extends Frame{
 
         Panel buttonsDisplay = new Panel(new GridLayout(1, 2, 5, 5));
 
-        toMorse = new Button("Translate to Morse");
-        toEnglish = new Button("Translate to English");
+        Button toMorse = new Button("Translate to Morse");
+        Button toEnglish = new Button("Translate to English");
         ButtonListener listener = new ButtonListener();
         toMorse.addActionListener(listener);
         toEnglish.addActionListener(listener);
@@ -43,13 +39,16 @@ public class MorseCodeMachine extends Frame{
         add(panelDisplay, BorderLayout.NORTH);
         add(buttonsDisplay, BorderLayout.CENTER);
 
+
+        int windowWidth = 600;
+        int windowHeight = 350;
         setTitle("Morse Code Machine");
-        setSize(WINDOWWIDTH, WINDOWHEIGHT);
+        setSize(windowWidth, windowHeight);
 
         //Puts window in middle of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (dim.width - WINDOWWIDTH)/2;
-        int y = (dim.height - WINDOWHEIGHT)/2;
+        int x = (dim.width - windowWidth)/2;
+        int y = (dim.height - windowHeight)/2;
 
         setLocation(x, y);
         setVisible(true);
@@ -62,6 +61,10 @@ public class MorseCodeMachine extends Frame{
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (inputField.getText().equals("")) {
+                System.out.println("Please enter something in the box.");
+                return;
+            }
             Translator translator = new Translator();
             String symbol = ((Button) e.getSource()).getLabel();
             String input = inputField.getText();
