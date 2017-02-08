@@ -12,11 +12,11 @@ public class MorseCodeMachine extends Frame{
         Font uniform = new Font("Times New Roman", Font.PLAIN, 25);
 
         Panel panelDisplay = new Panel(new FlowLayout());
-        inputField = new TextArea(4, 20);
+        inputField = new TextArea(4, 30);
         inputField.setFont(uniform);
         panelDisplay.add(inputField);
 
-        outputField = new TextArea(4,20);
+        outputField = new TextArea(4,30);
         outputField.setEditable(false);
         outputField.setFont(uniform);
         panelDisplay.add(outputField);
@@ -46,8 +46,7 @@ public class MorseCodeMachine extends Frame{
         add(panelDisplay, BorderLayout.NORTH);
         add(buttonsDisplay, BorderLayout.CENTER);
 
-
-        int windowWidth = 650;
+        int windowWidth = 950;
         int windowHeight = 300;
         setTitle("Morse Code Machine");
         setSize(windowWidth, windowHeight);
@@ -69,7 +68,7 @@ public class MorseCodeMachine extends Frame{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (inputField.getText().equals("")) {
-                System.out.println("Please enter something in the box.");
+                outputField.setText("Please enter something in the \nbox to the left.");
                 return;
             }
 
